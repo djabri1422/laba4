@@ -18,6 +18,7 @@ public:
 	tmatrix operator+(tmatrix);
 	tmatrix operator*(tmatrix);
 	tmatrix operator == (tmatrix&)const;
+	tmatrix operator = (const tmatrix&);
 	~tmatrix();
 };
 
@@ -25,6 +26,27 @@ tmatrix::tmatrix(){
 	count_1=0;
 	count_2=0;
 }
+
+tmatrix tmatrix::operator = ( const tmatrix &tmat)
+{
+	for(int i=0;i<count_1;i++)
+	{
+		delete[] array[i];
+	}
+	delete[] array;
+	array = new int*[tmat.count_1];
+	for(int i=0;i<tmat.count_1;i++){
+		array[i]=new int[count_2];
+		for(int j=0;j<count_2;j++){
+			array[i][j]=tmat.array[i][j];
+		}
+	}
+	count_1 = tmat.count_1;
+	count_2 = tmat.count_2;
+	return *this;
+	
+}
+
 
 tmatrix tmatrix::operator == (tmatrix &MatrixCopy)const{
 	tmatrix re(count_1, count_2);
