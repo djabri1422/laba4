@@ -161,5 +161,6 @@ int main (){
 	tmatrix Comp = tmatrix_1*tmatrix_2;
 	Comp.print();
 	tmatrix  Mult = (tmatrix_1 == tmatrix_2);
+	tmatrix  Equel = (tmatrix_1 = tmatrix_2);
 	system("pause");
 }
